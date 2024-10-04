@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btNavigateToProfile = findViewById<Button>(R.id.button_to_profile) // Referência ao botão de perfil
+        val btNavigateToProfile = findViewById<ImageButton>(R.id.button_to_profile) // Referência ao botão de perfil
         btNavigateToProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)

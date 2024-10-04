@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,7 +23,7 @@ class RecipeActivity : AppCompatActivity() {
             insets
         }
 
-        val btNavigate = findViewById<Button>(R.id.button_return_recipe)
+        val btNavigate = findViewById<ImageButton>(R.id.button_return_recipe)
         btNavigate.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)

@@ -19,14 +19,15 @@
         android:orientation="horizontal"
         android:paddingBottom="16dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/button_to_profile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:rotationX="0"
             android:text="Perfil"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/cream"
+            android:src="@drawable/baseline_person_24"
             tools:ignore="MissingConstraints"
             />
     </LinearLayout>
