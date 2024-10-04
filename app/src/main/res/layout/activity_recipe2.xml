@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingStart="20dp"
-            android:text="Croissant"
+            android:text="Bolo de Cenoura"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -66,7 +66,7 @@
                 android:layout_height="200dp"
                 android:padding="20dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/croissant"
+                android:src="@drawable/bolo"
                 android:contentDescription="Imagem do Produto" />
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingStart="20dp"
-                android:text="Croissant de chocolate com massa folhada"
+                android:text="Bolo de Cenoura fofinho"
                 android:textSize="16sp" />
 
             <TextView
