@@ -16,15 +16,13 @@ class RecipeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_recipe)
 
-        // Aplicar insets do sistema (barras de status, barra de navegação)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Navegação para outra atividade com botão
-        val btNavigate = findViewById<Button>(R.id.button_return_recipe) // Referência ao botão no XML
+        val btNavigate = findViewById<Button>(R.id.button_return_recipe)
         btNavigate.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)

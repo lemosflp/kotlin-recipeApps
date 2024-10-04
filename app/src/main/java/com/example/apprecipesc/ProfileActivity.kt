@@ -21,13 +21,13 @@ class ProfileActivity : AppCompatActivity() {
             insets
         }
 
-        val btNavigateToHome = findViewById<Button>(R.id.button_to_home) // Referência ao botão de receita
+        val btNavigateToHome = findViewById<Button>(R.id.button_to_home)
         btNavigateToHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        val btNavigateToRecipe = findViewById<Button>(R.id.button_profile_recipe) // Referência ao botão de receita
+        val btNavigateToRecipe = findViewById<Button>(R.id.button_profile_recipe)
         btNavigateToRecipe.setOnClickListener {
             val intent = Intent(this, RecipeActivity::class.java)
             startActivity(intent)
