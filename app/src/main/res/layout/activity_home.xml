@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="visible"
+    tools:context=".HomeActivity">
+
+
+    <!-- Título: Receitas e ícone do Perfil -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="16dp">
+
+        <!-- Ícone do Perfil -->
+        <Button
+            android:id="@+id/button_to_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:rotationX="0"
+            android:text="Acessar receita"
+            android:backgroundTint="@color/yellow"
+            tools:ignore="MissingConstraints"
+            />
+    </LinearLayout>
+
+    <!-- Campo de Busca -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <!-- Ícone de Busca -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Buscar"
+            android:src="@drawable/baseline_search_24" />
+
+        <!-- Campo de texto para pesquisa -->
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Pesquisar receitas"
+            android:paddingStart="8dp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <!-- Lista de Receitas -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Receita 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Imagem da Receita -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Imagem da Receita"
+                    android:src="@drawable/croissant" />
+
+                <!-- Conteúdo da Receita -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp">
+
+                    <!-- Nome da Receita -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Croissant"
+                        android:textColor="@color/brown"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <!-- Breve descrição -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Croissant de chocolate com massa folhada"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/button_to_recipe"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:rotationX="0"
+                        android:text="Acessar receita"
+                        android:backgroundTint="@color/yellow"
+                        tools:ignore="MissingConstraints"
+                        />
+                </LinearLayout>
+
+                <!-- Coração para Favoritar -->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Favoritar"
+                    android:src="@drawable/baseline_favorite_24" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="visible"
+    tools:context=".RecipeActivity">
+
+    <!-- Botão de Voltar acima do nome da receita -->
+
+    <!-- Nome da receita e coração para favoritar -->
+    <Button
+        android:id="@+id/button_return_recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:rotationX="0"
+        android:text="Voltar"
+        android:backgroundTint="@color/yellow"
+        tools:ignore="MissingConstraints"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout_recipe_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_recipe_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Croissant"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Coração para favoritar -->
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_favorite_24"
+            android:contentDescription="Favoritar" />
+    </LinearLayout>
+
+    <!-- Conteúdo da página (imagem grande, descrição, ingredientes e preparo) -->
+    <ScrollView
+        android:id="@+id/scrollView_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_recipe_header"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Imagem grande do produto -->
+            <ImageView
+                android:id="@+id/iv_recipe_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/croissant"
+                android:contentDescription="Imagem do Produto" />
+
+            <!-- Texto explicativo sobre a receita -->
+            <TextView
+                android:id="@+id/tv_recipe_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Croissant de chocolate com massa folhada"
+                android:textSize="16sp" />
+
+            <!-- Ingredientes -->
+            <TextView
+                android:id="@+id/tv_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ingredientes"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_ingredients_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="- Ingrediente 1\n- Ingrediente 2\n- Ingrediente 3\n- Ingrediente 4"
+                android:textSize="16sp" />
+
+            <!-- Modo de preparo -->
+            <TextView
+                android:id="@+id/tv_preparation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Modo de Preparo"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_preparation_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Passo 1\n2. Passo 2\n3. Passo 3\n4. Passo 4"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
