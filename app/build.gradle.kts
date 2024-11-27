@@ -52,13 +52,11 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
+    implementation ("com.squareup.picasso:picasso:2.71828")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
 
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
-    implementation ("com.google.firebase:firebase-database:20.2.0")
-    implementation ("com.google.firebase:firebase-storage:20.2.0")
-    implementation ("com.squareup.picasso:picasso:2.71828")
 }
