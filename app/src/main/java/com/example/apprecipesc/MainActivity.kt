@@ -13,15 +13,10 @@ import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
-
-
 class MainActivity : AppCompatActivity() {
-
 
     private lateinit var auth: FirebaseAuth
     private var binding: ActivityMainBinding? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
