@@ -24,7 +24,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
-//        enableEdgeToEdge()
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -35,41 +34,40 @@ class HomeActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-//                val btNavigateToRecipe1 = findViewById<Button>(R.id.adapterButton) // Referência ao botão de receita
-//        btNavigateToRecipe1.setOnClickListener {
-//            val intent = Intent(this, RecipeActivity::class.java)
-//            startActivity(intent)
-//        }
-
-//        val btNavigateToRecipe2 = findViewById<Button>(R.id.button_to_recipe2) // Referência ao botão de receita
-//        btNavigateToRecipe2.setOnClickListener {
-//            val intent = Intent(this, RecipeActivity2::class.java)
-//            startActivity(intent)
-//        }
-
-        val btNavigateToProfile = findViewById<ImageButton>(R.id.button_to_profile) // Referência ao botão de perfil
+        val btNavigateToProfile = findViewById<ImageButton>(R.id.button_to_profile)
         btNavigateToProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }
 
+    private fun initRecyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.setHasFixedSize(true)
 
-
-        private fun initRecyclerView() {
-            binding.recyclerView.layoutManager = LinearLayoutManager(this)
-            binding.recyclerView.setHasFixedSize(true)
-            binding.recyclerView.adapter = Adapter(getList())
+        val recipeList = getList()
+        val adapter = RecipeAdapter(recipeList) { recipe ->
+            val intent = Intent(this, RecipeActivity::class.java)
+            intent.putExtra("RECIPE_KEY", recipe)  // Passando a receita
+            startActivity(intent)
         }
+        binding.recyclerView.adapter = adapter
+    }
 
-        private fun getList() = listOf(
-            Recipe("Croissant", "Delicioso croissant de chocolate com recheio cremoso.", R.drawable.croissant),
-            Recipe("Bolo de cenoura", "Bolo de cenoura fofinho com cobertura de chocolate.", R.drawable.bolo),
-            Recipe("Croissant", "Delicioso croissant de chocolate com recheio cremoso.", R.drawable.croissant),
-            Recipe("Bolo de cenoura", "Bolo de cenoura fofinho com cobertura de chocolate.", R.drawable.bolo),
-            Recipe("Croissant", "Delicioso croissant de chocolate com recheio cremoso.", R.drawable.croissant),
-            Recipe("Bolo de cenoura", "Bolo de cenoura fofinho com cobertura de chocolate.", R.drawable.bolo)
+    private fun getList() = listOf(
+        Recipe(
+            "Croissant",
+            "Delicioso croissant de chocolate com recheio cremoso.",
+            R.drawable.croissant,
+            listOf("Farinha", "Manteiga", "Chocolate", "Água"),
+            listOf("Passo 1: Misture a farinha...", "Passo 2: Adicione o chocolate...", "Passo 3: Modele...", "Passo 4: Asse no forno")
+        ),
+        Recipe(
+            "Bolo de Cenoura",
+            "Bolo de cenoura fofinho com cobertura de chocolate.",
+            R.drawable.bolo,
+            listOf("Cenoura", "Farinha", "Açúcar", "Ovos"),
+            listOf("Passo 1: Bata as cenouras...", "Passo 2: Misture os ingredientes...", "Passo 3: Asse por 40 minutos...")
         )
-
-
+    )
 }
