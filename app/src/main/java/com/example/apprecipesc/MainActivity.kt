@@ -11,6 +11,7 @@ import com.example.apprecipesc.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
         auth = Firebase.auth
-
 
         binding?.buttonNv?.setOnClickListener {
             val email = binding?.email?.text.toString()
@@ -39,14 +38,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        // Navegar para a tela de registro
         binding?.textCreateAccount?.setOnClickListener {
             val intent = Intent(this@MainActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
-
 
     private fun signInWithEmailAndPassword(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -58,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

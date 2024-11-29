@@ -12,31 +12,24 @@ import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
-
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityRegisterBinding
-
 
     companion object {
         private const val TAG = "RegisterActivity"
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Inicializa o FirebaseAuth
         auth = FirebaseAuth.getInstance()
-
 
         binding.buttonRegister.setOnClickListener {
             val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString().trim()
             val confirmPassword = binding.confirmPassword.text.toString().trim()
-
 
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                 if (password == confirmPassword) {
@@ -51,13 +44,11 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-
     private fun createUser(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Log.d(TAG, "createUserWithEmailAndPassword: Sucesso")
                 Toast.makeText(this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show()
-                // Navega para a tela de login
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {

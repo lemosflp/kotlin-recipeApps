@@ -60,13 +60,6 @@
                 />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Favoritar"
-            android:src="@drawable/baseline_favorite_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
