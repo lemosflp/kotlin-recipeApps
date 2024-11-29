@@ -10,22 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecipeAdapter(
-    private val recipeList: List<Recipe>,
+    private var recipes: List<Recipe>,
     private val onItemClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_adapter, parent, false)
-        return RecipeViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        val recipe = recipeList[position]
-
-        holder.bind(recipe)
-    }
-
-    override fun getItemCount(): Int = recipeList.size
+    private var filterRecipes: List<Recipe> = recipes.toList()
 
     inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val recipeImage: ImageView = itemView.findViewById(R.id.adapterImage)
@@ -38,11 +27,30 @@ class RecipeAdapter(
             recipeDesc.text = recipe.description
             recipeImage.setImageResource(recipe.imageResId)
 
-            // Associe o clique ao botão, e não à imagem
             buttonAccessRecipe.setOnClickListener {
                 onItemClick(recipe)
             }
         }
     }
-}
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recipe_adapter, parent, false)
+        return RecipeViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
+        holder.bind(filterRecipes[position])
+    }
+
+    override fun getItemCount(): Int = filterRecipes.size
+
+    fun filter(query: String?) {
+        filterRecipes = if (query.isNullOrEmpty()) {
+            recipes
+        } else {
+            recipes.filter { it.name.contains(query, ignoreCase = true) }
+        }
+        notifyDataSetChanged()
+    }
+}

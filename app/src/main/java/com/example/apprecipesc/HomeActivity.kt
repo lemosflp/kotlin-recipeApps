@@ -4,17 +4,14 @@ import Recipe
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import androidx.activity.enableEdgeToEdge
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.apprecipesc.databinding.ActivityHomeBinding
-import com.example.apprecipesc.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity() {
 
@@ -32,26 +29,37 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        initRecyclerView()
-
         val btNavigateToProfile = findViewById<ImageButton>(R.id.button_to_profile)
         btNavigateToProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    private fun initRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.setHasFixedSize(true)
+        val recipes = getList()
 
-        val recipeList = getList()
-        val adapter = RecipeAdapter(recipeList) { recipe ->
+        val recipeAdapter = RecipeAdapter(recipes) { selectedRecipe ->
             val intent = Intent(this, RecipeActivity::class.java)
-            intent.putExtra("RECIPE_KEY", recipe)  // Passando a receita
+            intent.putExtra("RECIPE_KEY", selectedRecipe)
             startActivity(intent)
         }
-        binding.recyclerView.adapter = adapter
+
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            adapter = recipeAdapter
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                recipeAdapter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                recipeAdapter.filter(newText)
+                return false
+            }
+        })
     }
 
     private fun getList() = listOf(
