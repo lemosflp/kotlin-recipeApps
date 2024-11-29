@@ -55,4 +55,4 @@ Aqui estão as tecnologias usadas no projeto
 ## Autores
 
   * Felipe Lemos de Oliveira (lemosflp)
-  * Everton Santos de Castro (escastro)
+  * Everton Santos de Castro (evertonsc)
