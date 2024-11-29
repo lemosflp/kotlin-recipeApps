@@ -10,47 +10,52 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecipeAdapter(
-    private var recipes: List<Recipe>,
-    private val onItemClick: (Recipe) -> Unit
+    private val recipes: List<Recipe>,
+    private val onRecipeClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
-    private var filterRecipes: List<Recipe> = recipes.toList()
-
-    inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val recipeImage: ImageView = itemView.findViewById(R.id.adapterImage)
-        private val recipeName: TextView = itemView.findViewById(R.id.adapterName)
-        private val recipeDesc: TextView = itemView.findViewById(R.id.adapterDesc)
-        private val buttonAccessRecipe: Button = itemView.findViewById(R.id.adapterButton)
-
-        fun bind(recipe: Recipe) {
-            recipeName.text = recipe.name
-            recipeDesc.text = recipe.description
-            recipeImage.setImageResource(recipe.imageResId)
-
-            buttonAccessRecipe.setOnClickListener {
-                onItemClick(recipe)
-            }
-        }
-    }
+    var filteredRecipes = recipes
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recipe_adapter, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_adapter, parent, false)
         return RecipeViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.bind(filterRecipes[position])
+        val recipe = filteredRecipes[position]
+        holder.bind(recipe)
     }
 
-    override fun getItemCount(): Int = filterRecipes.size
+    override fun getItemCount(): Int = filteredRecipes.size
 
     fun filter(query: String?) {
-        filterRecipes = if (query.isNullOrEmpty()) {
+        filteredRecipes = if (query.isNullOrEmpty()) {
             recipes
         } else {
             recipes.filter { it.name.contains(query, ignoreCase = true) }
         }
         notifyDataSetChanged()
     }
+
+    inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val recipeImage: ImageView = view.findViewById(R.id.adapterImage)
+        private val recipeName: TextView = itemView.findViewById(R.id.adapterName)
+        private val recipeDescription: TextView = itemView.findViewById(R.id.adapterDesc)
+        private val navigateButton: Button = itemView.findViewById(R.id.adapterButton)
+
+        fun bind(recipe: Recipe) {
+            recipeName.text = recipe.name
+            recipeDescription.text = recipe.description
+            recipeImage.setImageResource(recipe.imageResId)
+
+            navigateButton.setOnClickListener {
+                onRecipeClick(recipe)
+            }
+        }
+    }
 }
+
+
+
+
+

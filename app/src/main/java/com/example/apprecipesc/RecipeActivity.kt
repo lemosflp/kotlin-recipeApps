@@ -21,7 +21,7 @@ class RecipeActivity : AppCompatActivity() {
 
         val recipe: Recipe = intent.getSerializableExtra("RECIPE_KEY") as Recipe
 
-        // Verificando se a receita foi recebida corretamente
+        // Validate recipe
         if (recipe != null) {
             val recipeName: TextView = findViewById(R.id.tv_recipe_name)
             val recipeImage: ImageView = findViewById(R.id.iv_recipe_image)
@@ -29,18 +29,16 @@ class RecipeActivity : AppCompatActivity() {
             val ingredientsList: TextView = findViewById(R.id.tv_ingredients_list)
             val preparationSteps: TextView = findViewById(R.id.tv_preparation_steps)
 
-            // Preenchendo os campos com os dados da receita
             recipeName.text = recipe.name
             recipeImage.setImageResource(recipe.imageResId)
             recipeDescription.text = recipe.description
-            ingredientsList.text = recipe.ingredients.joinToString("\n") { "- $it" }
-            preparationSteps.text = recipe.preparationSteps.joinToString("\n") { "$it" }
+            ingredientsList.text = recipe.ingredients
+            preparationSteps.text = recipe.preparationSteps
         }
 
-        // Configurando o botão de retorno
         val returnButton: ImageButton = findViewById(R.id.button_return_recipe)
         returnButton.setOnClickListener {
-            finish()  // Voltar para a HomeActivity
+            finish()
         }
     }
 }
