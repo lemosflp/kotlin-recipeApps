@@ -8,7 +8,6 @@
     android:id="@+id/main"
     tools:context=".ProfileActivity">
 
-    <!-- ImageButton para navegação de volta -->
     <ImageButton
         android:id="@+id/button_to_home"
         android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <!-- Foto do usuário -->
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -48,7 +46,6 @@
         android:textColor="@android:color/black"
         android:layout_marginTop="16dp" />
 
-    <!-- Campo para cadastrar a receita -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +54,6 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center" />
 
-    <!-- Campos para o cadastro da receita -->
     <EditText
         android:id="@+id/edt_recipe_id"
         android:layout_width="match_parent"
@@ -93,7 +89,6 @@
         android:hint="Etapas de Preparação"
         android:inputType="textMultiLine" />
 
-    <!-- Botão para salvar a receita -->
     <Button
         android:id="@+id/button_save_recipe"
         android:layout_width="match_parent"
